@@ -1,4 +1,7 @@
 package com.example.footballapp.di
 
-class PersistenceModule {
+@Module
+@InstallIn(SingletonComponent::class)
+object PersistenceModule {
+
 }

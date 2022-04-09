@@ -1,4 +1,7 @@
 package com.example.footballapp.ui.leagues
 
-class Leagues {
+import androidx.compose.runtime.Composable
+
+@Composable
+fun Leagues() {
 }

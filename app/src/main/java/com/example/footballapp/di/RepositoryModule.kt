@@ -1,4 +1,7 @@
 package com.example.footballapp.di
 
-class RepositoryModule {
+@Module
+@InstallIn(SingletonComponent::class)
+object RepositoryModule {
+
 }

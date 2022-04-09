@@ -1,4 +1,9 @@
 package com.example.footballapp.di
 
-class NetworkModule {
+@Module
+@InstallIn(SingletonComponent::class)
+object NetworkModule {
+
+
+
 }
