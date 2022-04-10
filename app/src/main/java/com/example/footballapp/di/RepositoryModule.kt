@@ -17,5 +17,12 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @InstallIn(ViewModelComponent::class)
 object RepositoryModule {
 
-
+    @Provides
+    @ViewModelScoped
+    fun provideDetailRepository(
+        teamService: TeamService,
+        teamDao: TeamDao
+    ): DetailRepository {
+        return DetailRepository(teamService, teamDao)
+    }
 }

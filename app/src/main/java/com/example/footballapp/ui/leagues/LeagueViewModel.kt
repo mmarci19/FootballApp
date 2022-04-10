@@ -16,7 +16,7 @@ class LeagueViewModel @Inject constructor(
     //private val leagueIdSharedFlow: MutableSharedFlow<Long> = MutableSharedFlow(replay = 1)
 
 //    val leagueDetailsFlow = leagueIdSharedFlow.flatMapLatest {
-  //      leagueRepository.getLeagueById(it)
+  //      leagueRepository.getLeagues()
    // }
 
     //fun loadLeagueById(id: Long) = leagueIdSharedFlow.tryEmit(id)

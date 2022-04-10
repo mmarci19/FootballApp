@@ -12,4 +12,8 @@ class LeagueDao {
     fun getAllLeagues(){
 
     }
+
+    fun insertLeague(){
+
+    }
 }
