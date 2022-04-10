@@ -1,4 +1,14 @@
 package com.example.footballapp.ui.leagues
 
-class LeagueViewModel {
+import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import javax.inject.Inject
+
+@HiltViewModel
+class LeagueViewModel @Inject constructor(
+    private val leagueRepository: LeagueRepository
+
+) : ViewModel() {
+
 }
