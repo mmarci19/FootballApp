@@ -8,4 +8,5 @@ import com.example.footballapp.model.Team
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun teamDao(): TeamDao
+
 }
