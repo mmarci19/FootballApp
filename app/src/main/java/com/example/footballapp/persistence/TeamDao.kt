@@ -13,4 +13,8 @@ interface TeamDao {
 
     }
 
+    fun insertTeam(){
+
+    }
+
 }
