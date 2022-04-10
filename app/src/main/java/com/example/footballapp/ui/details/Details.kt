@@ -4,5 +4,5 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun Details() {
-//comment for test pushes
+//comment for test push
 }
