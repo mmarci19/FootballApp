@@ -3,7 +3,9 @@ name: Android CI
 on:
   push:
     branches:
-    - '**'        # matches every branch
+    - dev
+    - master
+    - feature
   pull_request:
     branches: [ master ]
 
