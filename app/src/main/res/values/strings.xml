@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">FootballApp</string>
+    <string name="database">Teams.db</string>
+    <string name="database2">Leagues.db</string>
 </resources>
