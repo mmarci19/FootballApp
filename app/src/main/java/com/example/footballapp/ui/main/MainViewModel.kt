@@ -16,6 +16,5 @@ class MainViewModel @Inject constructor(
     mainRepository: MainRepository
 ) : ViewModel() {
 
-    val leagueList: Flow<List<League>> = mainRepository.loadLeagues()
 
 }
