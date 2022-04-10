@@ -6,9 +6,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class LeagueViewModel @Inject constructor(
-    private val leagueRepository: LeagueRepository
-
-) : ViewModel() {
+class LeagueViewModel  {
 
 }
