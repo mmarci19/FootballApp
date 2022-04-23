@@ -32,15 +32,8 @@ class TeamsRepository @Inject constructor(
         val teams: List<Team> = teamDao.getAllTeams()
         if (teams.isEmpty()) {
             // request API network call asynchronously.
-            teamService.fetchTeamList()
-                // handle the case when the API request gets a success response.
-                .suspendOnSuccess {
-                    teamDao.insertTeamList(data)
-                    emit(data)
-                }
-                // handle the case when the API request is fails.
-                // e.g. internal server error.
-                .onFailure { onError(this) }
+            teamService.fetchTeamList("2021","HU","League")
+
         } else {
             emit(teams)
         }

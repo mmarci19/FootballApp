@@ -23,10 +23,10 @@ data class Team (
 
         fun mock() = Team(
 
-                id_ = "651",
-                name =  "Ferencvarosi TC",
-                logo = "https://media.api-sports.io/football/teams/651.png",
-                        wins = "18",
+            id_ = "651",
+            name =  "Ferencvarosi TC",
+            logo = "https://media.api-sports.io/football/teams/651.png",
+            wins = "18",
             league = "271" ,
             loses = "5",
             goalScored = "49",

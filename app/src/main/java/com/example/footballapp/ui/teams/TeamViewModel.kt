@@ -9,13 +9,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TeamViewModel @Inject constructor(
-    //private val teamsRepository: TeamsRepository
+    private val teamsRepository: TeamsRepository
 ) : ViewModel() {
 
-   // private val teamIdSharedFlow: MutableSharedFlow<Long> = MutableSharedFlow(replay = 1)
+   private val teamIdSharedFlow: MutableSharedFlow<Long> = MutableSharedFlow(replay = 1)
 
-//    val teamDetailsFlow = teamIdSharedFlow.flatMapLatest {
- //       teamsRepository.getTeams()
-  //  }
+    val leagueDetailsFlow = teamIdSharedFlow.flatMapLatest {
+        teamsRepository.getTeams()
+    }
+
+    fun loadLeagueById(id: Long) = teamIdSharedFlow.tryEmit(id)
 
 }

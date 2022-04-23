@@ -10,7 +10,7 @@ import com.example.footballapp.model.Team
 interface TeamDao {
 
     @Query("SELECT * FROM Team WHERE id = :id_")
-    suspend fun getById(id_: Long)
+    suspend fun getById(id_: Long) : Team
 
     @Query("SELECT * FROM Team")
     suspend fun getAllTeams(): List<Team>
@@ -18,5 +18,7 @@ interface TeamDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeamList(teams: List<Team>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTeam(team: Team)
 
 }
