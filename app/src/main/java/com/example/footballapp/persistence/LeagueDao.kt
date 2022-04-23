@@ -1,19 +1,22 @@
 package com.example.footballapp.persistence
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import com.example.footballapp.model.League
+import com.example.footballapp.model.Team
 
 
 @Dao
-class LeagueDao {
+interface LeagueDao {
 
-    fun getById(id:Long){
+    @Query("SELECT * FROM League WHERE id = :id_")
+    fun getById(id_: Long)
 
-    }
+    @Query("SELECT * FROM League")
+    fun getAllLeagues(): List<League>
 
-    fun getAllLeagues(){
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertLeagueList(leagues: List<League>)
 
-    }
-
-    fun insertLeague(){
-
-    }
 }
