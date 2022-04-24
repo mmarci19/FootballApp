@@ -15,4 +15,17 @@ data class TeamModel (
     @SerializedName("response" ) var responses : ArrayList<TeamResponse>           = arrayListOf()
 
 )
+{
+    companion object {
 
+        fun mock() = TeamModel(
+            get = "league",
+            params = TeamParameters(),
+            errors = ArrayList<String>(),
+            paging = Paging(),
+            results = 5,
+            responses = ArrayList<TeamResponse>(),
+        )
+    }
+
+}

@@ -19,6 +19,22 @@ data class Team (
     var league_id : String? = null
 
 )
+{
+
+    companion object {
+
+        fun mock() = Team(
+            id = 0,
+            name = "Ferencvarosi TC",
+            code = "HU",
+            logo = "https://google.com",
+            country = "Hungary",
+            national = false,
+            league_id = "100"
+        )
+    }
+}
+
 
 
 

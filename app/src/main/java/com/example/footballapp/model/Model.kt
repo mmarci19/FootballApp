@@ -12,4 +12,17 @@ data class Model (
     @SerializedName("results") var results: Number? = null,
     @SerializedName("response" ) var responses : ArrayList<FootballResponse>           = arrayListOf()
 
-)
+){
+companion object {
+
+    fun mock() = Model(
+        get = "league",
+        params = Parameters(),
+        errors = ArrayList<String>(),
+        paging = Paging(),
+        results = 5,
+        responses = ArrayList<FootballResponse>(),
+    )
+}
+
+}
