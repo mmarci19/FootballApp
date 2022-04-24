@@ -33,7 +33,7 @@ class TeamsRepository @Inject constructor(
         if (teams.isEmpty()) {
             // request API network call asynchronously.
             teamService.fetchTeamList("2021","HU","League")
-
+            //TODO: handle successful request - insert into DB.
         } else {
             emit(teams)
         }

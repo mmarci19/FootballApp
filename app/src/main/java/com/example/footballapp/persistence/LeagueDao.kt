@@ -10,8 +10,8 @@ import com.example.footballapp.model.Team
 @Dao
 interface LeagueDao {
 
-    @Query("SELECT * FROM League WHERE id = :id_")
-    fun getById(id_: Long)
+    @Query("SELECT * FROM League WHERE id_ = :id__")
+    fun getById(id__: Long)
 
     @Query("SELECT * FROM League")
     fun getAllLeagues(): List<League>

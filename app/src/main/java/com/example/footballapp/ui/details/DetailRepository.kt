@@ -1,6 +1,7 @@
 package com.example.footballapp.ui.details
 
 import androidx.annotation.WorkerThread
+import com.example.footballapp.model.League
 import com.example.footballapp.model.Team
 import com.example.footballapp.network.TeamService
 import com.example.footballapp.persistence.TeamDao
@@ -20,13 +21,27 @@ class DetailRepository @Inject constructor(
     private val teamDao: TeamDao
 )
 {
-    private var teamID: String = "0"
-
-    @WorkerThread
-    fun loadTeamById(teamID: String) = flow {
-        val team = teamDao.getById(teamID.toLong())
-        emit(team)
+    fun getTeam(id: String) = flow {
+        val teams = teamDao.getById(id.toLong())
+        emit(teams)
     }.flowOn(Dispatchers.IO)
 
+    @WorkerThread
+    fun loadTeamById(id: String,
+        onStart: () -> Unit,
+        onCompletion: () -> Unit,
+        onError: (String) -> Unit
+    ) = flow {
+        val team: Team = teamDao.getById(id.toLong())
+        var teams = listOf(team)
 
+        if (teams.isEmpty()) {
+            // request API network call asynchronously.
+            teamService.fetchTeamStats("2021","HU","League", id)
+            //TODO: handle successful request - insert into DB.
+        } else {
+            emit(teams)
+        }
+    }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
+    
 }

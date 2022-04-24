@@ -1,16 +1,18 @@
 package com.example.footballapp.model
 
 import androidx.compose.runtime.Immutable
+import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 
 @Entity
 @Immutable
 data class League (
-    val id_: String,
-    val name: String,
-    val logo: String,
-    val type: String
+    @PrimaryKey val id_: String,
+    @ColumnInfo(name = "name") val name: String,
+    @ColumnInfo(name = "logo") val logo: String,
+    @ColumnInfo(name = "type") val type: String
 )
 {
 

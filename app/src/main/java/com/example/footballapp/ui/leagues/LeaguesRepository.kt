@@ -14,12 +14,12 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import retrofit2.Retrofit
 import javax.inject.Inject
 
 class LeaguesRepository @Inject constructor(
     private val leagueService: LeagueService,
     private val leagueDao: LeagueDao
-
 ) {
 
     fun getLeagues() = flow {
@@ -33,15 +33,13 @@ class LeaguesRepository @Inject constructor(
         onCompletion: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
-        val teams: List<League> = leagueDao.getAllLeagues()
-        if (teams.isEmpty()) {
+        val leagues: List<League> = leagueDao.getAllLeagues()
+        if (leagues.isEmpty()) {
             // request API network call asynchronously.
             leagueService.fetchLeagueList("2021","HU","League")
-
+            //TODO: handle successful request - insert into DB.
         } else {
-            emit(teams)
+            emit(leagues)
         }
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
-
-
 }

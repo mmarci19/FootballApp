@@ -19,7 +19,7 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(application: Application): AppDatabase {
+    fun provideAppDatabaseTeam(application: Application): AppDatabase {
         return Room
             .databaseBuilder(
                 application,
@@ -32,12 +32,12 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase2(application: Application): AppDatabase2{
+    fun provideAppDatabaseLeague(application: Application): AppDatabase{
         return Room
             .databaseBuilder(
                 application,
-                AppDatabase2::class.java,
-                application.getString(R.string.database2)
+                AppDatabase::class.java,
+                "Leagues.db"
             )
             .fallbackToDestructiveMigration()
             .build()

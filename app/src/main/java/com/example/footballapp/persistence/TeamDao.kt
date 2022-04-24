@@ -9,8 +9,8 @@ import com.example.footballapp.model.Team
 @Dao
 interface TeamDao {
 
-    @Query("SELECT * FROM Team WHERE id = :id_")
-    suspend fun getById(id_: Long) : Team
+    @Query("SELECT * FROM Team WHERE id_ = :id__")
+    suspend fun getById(id__: Long) : Team
 
     @Query("SELECT * FROM Team")
     suspend fun getAllTeams(): List<Team>
