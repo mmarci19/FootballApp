@@ -15,7 +15,7 @@ import javax.inject.Inject
 //ONLY NETWORK CALLS ARE USED.
 
 class DetailRepository @Inject constructor(
-    private val teamService: TeamService,
+    private val teamService: TeamService
 )
 {
     @WorkerThread
