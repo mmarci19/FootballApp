@@ -10,10 +10,10 @@ interface TeamService {
 
 @Headers("X-RapidAPI-Key: 3af0cfc0e3msh1751c32679b8f64p1f6954jsn54fb0872207f")
 @GET("teams")
-suspend fun fetchTeamList(@Query("season") season: String, @Query("code") code: String, @Query("type") type: String): Call<List<Team>>
+suspend fun fetchTeamList(@Query("season") season: String, @Query("code") code: String, @Query("type") type: String, @Query("league") league: String): Call<List<Team>>
 
 @Headers("X-RapidAPI-Key: 3af0cfc0e3msh1751c32679b8f64p1f6954jsn54fb0872207f")
 @GET("teams/statistics")
-suspend fun fetchTeamStats(@Query("season") season: String, @Query("code") code: String, @Query("type") type: String, @Query("id") id_ : String): Call<Team>
+suspend fun fetchTeamStats(@Query("season") season: String, @Query("code") code: String, @Query("type") type: String, @Query("id") id_ : String, @Query("league") league: String): Call<Team>
 
 }

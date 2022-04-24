@@ -18,21 +18,21 @@ class TeamsRepository @Inject constructor(
     private val teamDao: TeamDao
 )
 {
-    fun getTeams() = flow {
-        val teams = teamDao.getAllTeams()
+    fun getTeams(l_id: String) = flow {
+        val teams = teamDao.getAllTeams(l_id)
         emit(teams)
     }.flowOn(Dispatchers.IO)
 
     @WorkerThread
-    fun loadTeams(
+    fun loadTeams(l_id: String,
         onStart: () -> Unit,
         onCompletion: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
-        val teams: List<Team> = teamDao.getAllTeams()
+        val teams: List<Team> = teamDao.getAllTeams(l_id)
         if (teams.isEmpty()) {
             // request API network call asynchronously.
-            teamService.fetchTeamList("2021","HU","League")
+            teamService.fetchTeamList("2021","HU","League", l_id)
             //TODO: handle successful request - insert into DB.
         } else {
             emit(teams)

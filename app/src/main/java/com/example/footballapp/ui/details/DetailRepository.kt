@@ -21,13 +21,14 @@ class DetailRepository @Inject constructor(
     private val teamDao: TeamDao
 )
 {
+
     fun getTeam(id: String) = flow {
         val teams = teamDao.getById(id.toLong())
         emit(teams)
     }.flowOn(Dispatchers.IO)
 
     @WorkerThread
-    fun loadTeamById(id: String,
+    fun loadTeamById(id: String, l_id: String,
         onStart: () -> Unit,
         onCompletion: () -> Unit,
         onError: (String) -> Unit
@@ -37,11 +38,11 @@ class DetailRepository @Inject constructor(
 
         if (teams.isEmpty()) {
             // request API network call asynchronously.
-            teamService.fetchTeamStats("2021","HU","League", id)
+            teamService.fetchTeamStats("2021","HU","League", id, l_id)
             //TODO: handle successful request - insert into DB.
         } else {
             emit(teams)
         }
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
-    
+
 }

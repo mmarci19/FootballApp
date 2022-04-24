@@ -12,13 +12,15 @@ interface TeamDao {
     @Query("SELECT * FROM Team WHERE id_ = :id__")
     suspend fun getById(id__: Long) : Team
 
-    @Query("SELECT * FROM Team")
-    suspend fun getAllTeams(): List<Team>
+    @Query("SELECT * FROM Team WHERE league = :l_id")
+    suspend fun getAllTeams(l_id: String): List<Team>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeamList(teams: List<Team>)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeam(team: Team)
+
+
 
 }
