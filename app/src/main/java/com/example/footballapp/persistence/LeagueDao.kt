@@ -20,4 +20,6 @@ interface LeagueDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertLeagueList(leagues: List<League>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertLeague(league: League)
 }

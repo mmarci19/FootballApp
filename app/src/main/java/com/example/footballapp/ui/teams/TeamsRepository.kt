@@ -1,5 +1,6 @@
 package com.example.footballapp.ui.teams
 
+import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.footballapp.model.Team
 import com.example.footballapp.network.TeamService
@@ -29,14 +30,19 @@ class TeamsRepository @Inject constructor(
         onCompletion: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
-        val teams: List<Team> = teamDao.getAllTeams(l_id)
+        val teams = teamDao.getAllTeams(l_id)
         if (teams.isEmpty()) {
-            // request API network call asynchronously.
-            teamService.fetchTeamList("2021","HU","League", l_id)
-            //TODO: handle successful request - insert into DB.
+            var model = teamService.fetchTeamList("2021", l_id)
+            for (response in model.responses) {
+                response.team?.let { it.league_id = model.params?.league }
+                response.team?.let { teamDao.insertTeam(it) }
+                Log.d("TAG",response.team.toString())
+            }
+
         } else {
             emit(teams)
         }
+        Log.d("Semmi", "SEMMI")
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
 
 }

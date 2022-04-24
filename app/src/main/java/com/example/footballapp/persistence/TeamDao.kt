@@ -9,10 +9,10 @@ import com.example.footballapp.model.Team
 @Dao
 interface TeamDao {
 
-    @Query("SELECT * FROM Team WHERE id_ = :id__")
+    @Query("SELECT * FROM Team WHERE id = :id__")
     fun getById(id__: Long) : Team
 
-    @Query("SELECT * FROM Team WHERE league = :l_id")
+    @Query("SELECT * FROM Team WHERE league_id = :l_id")
     fun getAllTeams(l_id: String): List<Team>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

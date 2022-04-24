@@ -3,7 +3,7 @@ package com.example.footballapp.model
 import com.google.gson.annotations.SerializedName
 
 
-data class Seasons (
+data class Season (
 
     @SerializedName("year"     ) var year     : Int?      = null,
     @SerializedName("start"    ) var start    : String?   = null,

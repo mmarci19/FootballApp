@@ -38,21 +38,14 @@ class LeaguesRepository @Inject constructor(
     ) = flow {
         val leagues = leagueDao.getAllLeagues()
         if (leagues.isEmpty()) {
-
             var model = leagueService.fetchLeagueList("2021","HU","League")
-            Log.d("MODEL","MODELS")
-            Log.d("MODEL",model.toString())
-            Log.d("MODEL",model.responses.size.toString())
-            Log.d("MODEL", model.responses[0].league?.name.toString())
+            for (response in model.responses) {
+                response.league?.let { leagueDao.insertLeague(it) }
+                Log.d("TAG",response.league.toString())
+            }
 
 
-            val kutya: String = "kutya"
-
-            val cica: String = "cica"
-            val kobra = kutya + cica
-            Log.d("TAG",kobra)
         } else {
-            Log.d("STATIC DAO",leagues.toString())
             emit(leagues)
         }
         Log.d("Semmi", "SEMMI")
