@@ -2,11 +2,8 @@ package com.example.footballapp.ui.teams
 
 import android.util.Log
 import androidx.annotation.WorkerThread
-import com.example.footballapp.model.Team
 import com.example.footballapp.network.TeamService
 import com.example.footballapp.persistence.TeamDao
-import com.skydoves.sandwich.onFailure
-import com.skydoves.sandwich.suspendOnSuccess
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -33,6 +30,8 @@ class TeamsRepository @Inject constructor(
         val teams = teamDao.getAllTeams(l_id)
         if (teams.isEmpty()) {
             var model = teamService.fetchTeamList("2021", l_id)
+            Log.d("TAG",model.toString())
+
             for (response in model.responses) {
                 response.team?.let { it.league_id = model.params?.league }
                 response.team?.let { teamDao.insertTeam(it) }
@@ -40,9 +39,12 @@ class TeamsRepository @Inject constructor(
             }
 
         } else {
+            var model = teamService.fetchTeamList("2021", l_id)
+            Log.d("TAG",model.toString())
+
+
             emit(teams)
         }
-        Log.d("Semmi", "SEMMI")
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
 
 }

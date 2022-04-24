@@ -26,6 +26,7 @@ object PersistenceModule {
                 "FootballDatabase.db"
             )
             .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
             .build()
     }
 

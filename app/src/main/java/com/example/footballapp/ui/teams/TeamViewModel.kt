@@ -2,12 +2,9 @@ package com.example.footballapp.ui.teams
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.footballapp.model.Team
-import com.example.footballapp.ui.leagues.LeaguesRepository
+import com.example.footballapp.model.team.Team
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 @HiltViewModel

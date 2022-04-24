@@ -1,13 +1,6 @@
 package com.example.footballapp.network
 
-import com.example.footballapp.model.League
-import com.example.footballapp.model.Model
-import com.example.footballapp.model.Team
-import com.skydoves.sandwich.ApiResponse
-import okhttp3.ResponseBody
-import retrofit2.Call
-import retrofit2.Response
-import com.example.footballapp.network.HeaderDescriptor
+import com.example.footballapp.model.league.Model
 import retrofit2.http.*
 
 interface LeagueService {

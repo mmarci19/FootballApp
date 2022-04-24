@@ -1,4 +1,4 @@
-package com.example.footballapp.model
+package com.example.footballapp.model.team
 
 import androidx.compose.runtime.Immutable
 import androidx.room.Entity

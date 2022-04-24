@@ -1,6 +1,6 @@
 package com.example.footballapp.utils
 
-import com.example.footballapp.model.Team
+import com.example.footballapp.model.team.Team
 
 object MockTeam {
 

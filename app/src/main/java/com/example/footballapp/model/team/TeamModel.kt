@@ -1,8 +1,7 @@
-package com.example.footballapp.model
+package com.example.footballapp.model.team
 
-import androidx.compose.runtime.Immutable
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import com.example.footballapp.model.league.Paging
+import com.example.footballapp.model.team.response.TeamResponse
 import com.google.gson.annotations.SerializedName
 
 data class TeamModel (

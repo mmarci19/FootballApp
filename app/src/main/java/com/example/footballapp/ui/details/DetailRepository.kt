@@ -1,18 +1,14 @@
 package com.example.footballapp.ui.details
 
+import android.util.Log
 import androidx.annotation.WorkerThread
-import com.example.footballapp.model.League
-import com.example.footballapp.model.Team
+import com.example.footballapp.model.details.TeamDetailModel
+import com.example.footballapp.model.team.Team
 import com.example.footballapp.network.TeamService
 import com.example.footballapp.persistence.TeamDao
-import com.skydoves.sandwich.onFailure
-import com.skydoves.sandwich.suspendOnSuccess
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.onCompletion
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 
@@ -21,7 +17,7 @@ class DetailRepository @Inject constructor(
     private val teamDao: TeamDao
 )
 {
-
+    var testVariable: TeamDetailModel = TeamDetailModel()
     fun getTeam(id: String) = flow {
         val teams = teamDao.getById(id.toLong())
         emit(teams)
@@ -32,18 +28,21 @@ class DetailRepository @Inject constructor(
         onStart: () -> Unit,
         onCompletion: () -> Unit,
         onError: (String) -> Unit
-    ) = flow {
-        val team: Team = teamDao.getById(id.toLong())
-        var teams = listOf(team)
+    ) = flow<TeamDetailModel> {
 
-        if (teams.isEmpty()) {
-            // request API network call asynchronously.
-            val response = teamService.fetchTeamStats("2021", id, l_id)
+        var model = teamService.fetchTeamStats("2021",id,l_id)
+            Log.d("TAG","IF AG")
+            Log.d("TAG", model.toString())
+            Log.d("TAG",model.params.toString())
+            Log.d("TAG",model.get.toString())
+            Log.d("TAG", model.toString())
+            Log.d("TAG",model.responses.team.name.toString())
+            Log.d("TAG",model.responses.league.name.toString())
+            emit(model)
 
-            //TODO: handle successful request - insert into DB.
-        } else {
-            emit(teams)
-        }
-    }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
+    }.onStart { Log.d("MSG","Start")}.onCompletion { Log.d("MSG","FINISH")}.flowOn(Dispatchers.IO)
+
 
 }
+
+

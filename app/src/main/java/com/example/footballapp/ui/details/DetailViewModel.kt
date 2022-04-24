@@ -1,13 +1,11 @@
 package com.example.footballapp.ui.details
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.footballapp.model.League
-import com.example.footballapp.model.Team
-import com.example.footballapp.ui.teams.TeamsRepository
+import com.example.footballapp.model.details.TeamDetailModel
+import com.example.footballapp.model.team.Team
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.flatMapLatest
 import javax.inject.Inject
 
 
@@ -16,10 +14,10 @@ class DetailViewModel @Inject constructor(
     private val detailRepository: DetailRepository
 ) : ViewModel() {
 
-    val team: Flow<List<Team>> =
+    val team: Flow<TeamDetailModel> =
         detailRepository.loadTeamById(
-            id = "1",
-            l_id = "2",
+            id = "651",
+            l_id = "271",
             onStart = { },
             onCompletion = { },
             onError = {  }

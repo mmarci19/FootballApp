@@ -1,11 +1,9 @@
 package com.example.footballapp.persistence
 
-import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.footballapp.model.League
-import com.example.footballapp.model.Team
+import com.example.footballapp.model.league.League
+import com.example.footballapp.model.team.Team
 
 @Database(entities = [Team::class, League::class], version = 5, exportSchema = true)
 abstract class AppDatabase : RoomDatabase() {

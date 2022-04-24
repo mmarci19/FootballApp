@@ -1,5 +1,8 @@
-package com.example.footballapp.model
+package com.example.footballapp.model.league.response
 
+import com.example.footballapp.model.league.Country
+import com.example.footballapp.model.league.League
+import com.example.footballapp.model.league.Season
 import com.google.gson.annotations.SerializedName
 
 data class FootballResponse (

@@ -1,6 +1,7 @@
 
-package com.example.footballapp.model
+package com.example.footballapp.model.league
 
+import com.example.footballapp.model.league.response.FootballResponse
 import com.google.gson.annotations.SerializedName
 
 

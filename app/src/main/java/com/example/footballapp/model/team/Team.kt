@@ -1,7 +1,6 @@
-package com.example.footballapp.model
+package com.example.footballapp.model.team
 
 import androidx.compose.runtime.Immutable
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
