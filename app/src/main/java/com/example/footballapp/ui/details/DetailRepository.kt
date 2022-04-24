@@ -38,7 +38,7 @@ class DetailRepository @Inject constructor(
 
         if (teams.isEmpty()) {
             // request API network call asynchronously.
-            val response = teamService.fetchTeamStats("2021","HU","League", id, l_id)
+            val response = teamService.fetchTeamStats("2021", id, l_id)
 
             //TODO: handle successful request - insert into DB.
         } else {

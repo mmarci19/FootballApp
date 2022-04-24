@@ -35,10 +35,7 @@ class LeaguesActivity : ComponentActivity() {
         val leagues = leagueViewModel.leaguesList
         val teams = teamViewModel.teamsList
         Log.d("TAG","Before")
-        val flowValue: List<League>
-        runBlocking(Dispatchers.IO) {
-            flowValue = leagues.first()
-        }
+
         val flowValue_2: List<Team>
         runBlocking(Dispatchers.IO) {
             flowValue_2 = teams.first()

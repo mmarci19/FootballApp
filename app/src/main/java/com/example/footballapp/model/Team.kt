@@ -15,18 +15,11 @@ data class Team (
     @SerializedName("code" ) var code : String? = null,
     @SerializedName("logo" ) var logo : String? = null,
     @SerializedName("country") var country : String? = null,
-    @SerializedName("founded") var founded : Number? = null,
     @SerializedName("national") var national : Boolean? = null,
     var league_id : String? = null
 
 )
-{
 
-    companion object {
 
-        fun mock() = Team(
 
-        )
-    }
 
-}
