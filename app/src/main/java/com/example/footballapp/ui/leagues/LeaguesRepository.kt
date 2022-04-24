@@ -1,7 +1,9 @@
 package com.example.footballapp.ui.leagues
 
+import android.util.Log
 import androidx.annotation.WorkerThread
 import com.example.footballapp.model.League
+import com.example.footballapp.model.Model
 import com.example.footballapp.model.Team
 import com.example.footballapp.network.LeagueService
 import com.example.footballapp.network.TeamService
@@ -14,6 +16,7 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
+import retrofit2.Call
 import retrofit2.Retrofit
 import javax.inject.Inject
 
@@ -33,13 +36,25 @@ class LeaguesRepository @Inject constructor(
         onCompletion: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
-        val leagues: List<League> = leagueDao.getAllLeagues()
+        val leagues = leagueDao.getAllLeagues()
         if (leagues.isEmpty()) {
-            // request API network call asynchronously.
-            leagueService.fetchLeagueList("2021","HU","League")
-            //TODO: handle successful request - insert into DB.
+
+            var model = leagueService.fetchLeagueList("2021","HU","League")
+            Log.d("MODEL","MODELS")
+            Log.d("MODEL",model.toString())
+            Log.d("MODEL",model.responses.size.toString())
+            Log.d("MODEL", model.responses[0].league?.name.toString())
+
+
+            val kutya: String = "kutya"
+
+            val cica: String = "cica"
+            val kobra = kutya + cica
+            Log.d("TAG",kobra)
         } else {
+            Log.d("STATIC DAO",leagues.toString())
             emit(leagues)
         }
+        Log.d("Semmi", "SEMMI")
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
 }

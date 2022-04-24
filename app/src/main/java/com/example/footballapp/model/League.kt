@@ -4,22 +4,26 @@ import androidx.compose.runtime.Immutable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-
+import com.google.gson.annotations.SerializedName
 
 @Entity
 @Immutable
+
 data class League (
-    @PrimaryKey val id_: String,
-    @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "logo") val logo: String,
-    @ColumnInfo(name = "type") val type: String
+
+    @PrimaryKey @SerializedName("id"   ) var id   : Int?    = null,
+    @SerializedName("name" ) var name : String? = null,
+    @SerializedName("type" ) var type : String? = null,
+    @SerializedName("logo" ) var logo : String? = null
+
 )
+
 {
 
     companion object {
 
         fun mock() = League(
-            id_ = "271",
+            id = 271,
             name = "NB I",
             type = "League",
             logo = "https://media.api-sports.io/football/leagues/271.png"

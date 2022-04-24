@@ -23,24 +23,12 @@ object PersistenceModule {
             .databaseBuilder(
                 application,
                 AppDatabase::class.java,
-                application.getString(R.string.database)
+                "FootballDatabase.db"
             )
             .fallbackToDestructiveMigration()
             .build()
     }
 
-    //@Provides
-    //@Singleton
-    //fun provideAppDatabaseLeague(application: Application): AppDatabase{
-    //    return Room
-    //        .databaseBuilder(
-    //            application,
-    //            AppDatabase::class.java,
-    //            "Leagues.db"
-    //        )
-    //        .fallbackToDestructiveMigration()
-    //        .build()
-    //}
 
     @Provides
     @Singleton
