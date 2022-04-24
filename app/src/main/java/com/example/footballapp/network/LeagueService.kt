@@ -10,7 +10,7 @@ import retrofit2.http.Query
 
 interface LeagueService {
 
-    @Headers("X-RapidAPI-Key: 3af0cfc0e3msh1751c32679b8f64p1f6954jsn54fb0872207f")
+    @Headers("X-RapidAPI-Key: <key>")
     @GET("leagues")
     suspend fun fetchLeagueList(@Query("season") season: String, @Query("code") code: String, @Query("type") type: String): Call<List<League>>
 
