@@ -27,44 +27,9 @@ import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class LeaguesActivity : ComponentActivity() {
-    internal val teamViewModel: TeamViewModel by viewModels()
-    internal val leagueViewModel: LeagueViewModel by viewModels()
-    internal val detailViewModel: DetailViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("MSG","Before")
-        runBlocking {
-            val value = leagueViewModel.leaguesList.first()
-        }
-        runBlocking {
-            val value = teamViewModel.teamsList.first()
-        }
-        runBlocking {
-            val value = detailViewModel.team.first()
-        }
-        setContent {
-            FootballAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
-            }
-        }
-    }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    FootballAppTheme {
-        Greeting("Android")
     }
 }

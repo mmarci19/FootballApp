@@ -30,16 +30,16 @@ class LeaguesRepository @Inject constructor(
         val leagues = leagueDao.getAllLeagues()
         if (leagues.isEmpty()) {
             var model = leagueService.fetchLeagueList("2021","HU","League")
-            Log.d("TAG", model.toString())
+            Log.d("ECHO", model.toString())
             for (response in model.responses) {
                 response.league?.let { leagueDao.insertLeague(it) }
-                Log.d("TAG",response.league.toString())
+                Log.d("ECHO LEAGUE",response.league.toString())
             }
 
 
         } else {
-            var model = leagueService.fetchLeagueList("2021","HU","League")
-            Log.d("TAG", model.toString())
+            //var model = leagueService.fetchLeagueList("2021","HU","League")
+            //Log.d("TAG", model.toString())
             emit(leagues)
         }
 

@@ -23,13 +23,13 @@ data class Team (
     companion object {
 
         fun mock() = Team(
-            id = 0,
+            id = 271,
             name = "Ferencvarosi TC",
             code = "HU",
             logo = "https://google.com",
             country = "Hungary",
             national = false,
-            league_id = "100"
+            league_id = "651"
         )
     }
 }

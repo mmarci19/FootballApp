@@ -11,18 +11,13 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
+//ENTITIES FROM THIS CLASS ARE NOT IN DATABASE.
+//ONLY NETWORK CALLS ARE USED.
 
 class DetailRepository @Inject constructor(
     private val teamService: TeamService,
-    private val teamDao: TeamDao
 )
 {
-    var testVariable: TeamDetailModel = TeamDetailModel()
-    fun getTeam(id: String) = flow {
-        val teams = teamDao.getById(id.toLong())
-        emit(teams)
-    }.flowOn(Dispatchers.IO)
-
     @WorkerThread
     fun loadTeamById(id: String, l_id: String,
         onStart: () -> Unit,
@@ -31,16 +26,10 @@ class DetailRepository @Inject constructor(
     ) = flow<TeamDetailModel> {
 
         var model = teamService.fetchTeamStats("2021",id,l_id)
-            Log.d("TAG","IF AG")
-            Log.d("TAG", model.toString())
-            Log.d("TAG",model.params.toString())
-            Log.d("TAG",model.get.toString())
-            Log.d("TAG", model.toString())
-            Log.d("TAG",model.responses.team.name.toString())
-            Log.d("TAG",model.responses.league.name.toString())
-            emit(model)
+        Log.d("ECHO", model.toString())
+        emit(model)
 
-    }.onStart { Log.d("MSG","Start")}.onCompletion { Log.d("MSG","FINISH")}.flowOn(Dispatchers.IO)
+    }.onStart { Log.d("INFO","Start")}.onCompletion { Log.d("INFO","FINISH")}.flowOn(Dispatchers.IO)
 
 
 }

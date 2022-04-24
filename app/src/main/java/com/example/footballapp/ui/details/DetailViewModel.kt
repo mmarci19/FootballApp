@@ -16,8 +16,8 @@ class DetailViewModel @Inject constructor(
 
     val team: Flow<TeamDetailModel> =
         detailRepository.loadTeamById(
-            id = "651",
-            l_id = "271",
+            id = "651", //TODO League ID - Will get from the user in runtime.
+            l_id = "271", //TODO Team ID - Will get from the user in runtime.
             onStart = { },
             onCompletion = { },
             onError = {  }

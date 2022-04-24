@@ -14,9 +14,9 @@ class LeagueViewModel @Inject constructor(
 ) : ViewModel() {
     val leaguesList: Flow<List<League>> =
         leagueRepository.loadLeagues(
-            onStart = { Log.d("Start","STARTED.")},
-            onCompletion = { Log.d("Complete","COMPLETED")},
-            onError = { Log.d("Error","ERROR") }
+            onStart = { Log.d("INFO","STARTED.")},
+            onCompletion = { Log.d("INFO","COMPLETED")},
+            onError = { Log.d("INFO","ERROR") }
         )
 
 }

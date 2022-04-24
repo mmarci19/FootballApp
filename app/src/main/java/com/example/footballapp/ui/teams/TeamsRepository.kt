@@ -30,19 +30,17 @@ class TeamsRepository @Inject constructor(
         val teams = teamDao.getAllTeams(l_id)
         if (teams.isEmpty()) {
             var model = teamService.fetchTeamList("2021", l_id)
-            Log.d("TAG",model.toString())
+            Log.d("ECHO",model.toString())
 
             for (response in model.responses) {
                 response.team?.let { it.league_id = model.params?.league }
                 response.team?.let { teamDao.insertTeam(it) }
-                Log.d("TAG",response.team.toString())
+                Log.d("ECHO TEAM",response.team.toString())
             }
 
         } else {
-            var model = teamService.fetchTeamList("2021", l_id)
-            Log.d("TAG",model.toString())
-
-
+            //var model = teamService.fetchTeamList("2021", l_id)
+            //Log.d("TAG",model.toString())
             emit(teams)
         }
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)

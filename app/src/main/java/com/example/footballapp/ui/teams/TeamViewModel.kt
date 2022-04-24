@@ -13,7 +13,7 @@ class TeamViewModel @Inject constructor(
 ) : ViewModel() {
 
     val teamsList: Flow<List<Team>> =
-        teamsRepository.loadTeams( "271",
+        teamsRepository.loadTeams( "271", //TODO: TEAM_ID, Will get from the user in runtime.
             onStart = { Log.d("Start","STARTED.")},
             onCompletion = { Log.d("Complete","COMPLETED")},
             onError = {
