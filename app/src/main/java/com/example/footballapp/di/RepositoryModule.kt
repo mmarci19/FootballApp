@@ -20,10 +20,9 @@ object RepositoryModule {
     @Provides
     @ViewModelScoped
     fun provideDetailRepository(
-        teamService: TeamService,
-        teamDao: TeamDao
+        teamService: TeamService
     ): DetailRepository {
-        return DetailRepository(teamService, teamDao)
+        return DetailRepository(teamService)
     }
 
     @Provides
