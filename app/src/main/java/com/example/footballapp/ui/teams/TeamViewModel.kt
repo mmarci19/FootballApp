@@ -12,8 +12,17 @@ class TeamViewModel @Inject constructor(
     private val teamsRepository: TeamsRepository
 ) : ViewModel() {
 
-    val teamsList: Flow<List<Team>> =
-        teamsRepository.loadTeams( "271", //TODO: TEAM_ID, Will get from the user in runtime.
+    private var league_id = "999"
+
+    fun setLeagueId(id_: String){
+        Log.d("ID-SET", id_)
+        this.league_id = id_
+    }
+
+    lateinit var teamsList: Flow<List<Team>>
+
+    fun forceTeamLoad(){
+        teamsList = teamsRepository.loadTeams(this.league_id, //TODO: TEAM_ID, Will get from the user in runtime.
             onStart = { Log.d("Start","STARTED.")},
             onCompletion = { Log.d("Complete","COMPLETED")},
             onError = {
@@ -21,4 +30,5 @@ class TeamViewModel @Inject constructor(
                     "Error", "ERROR"
                 )
             })
+    }
 }

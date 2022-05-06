@@ -28,6 +28,7 @@ class TeamsRepository @Inject constructor(
         onError: (String) -> Unit
     ) = flow {
         val teams = teamDao.getAllTeams(l_id)
+        Log.d("LEAGUE ---- ID",l_id.toString())
         if (teams.isEmpty()) {
             var model = teamService.fetchTeamList("2021", l_id)
             Log.d("ECHO",model.toString())
@@ -39,8 +40,8 @@ class TeamsRepository @Inject constructor(
             }
 
         } else {
-            //var model = teamService.fetchTeamList("2021", l_id)
-            //Log.d("TAG",model.toString())
+            var model = teamService.fetchTeamList("2021", l_id)
+            Log.d("TAG",model.toString())
             emit(teams)
         }
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)

@@ -27,21 +27,27 @@ class LeaguesRepository @Inject constructor(
         onCompletion: () -> Unit,
         onError: (String) -> Unit
     ) = flow {
+        Log.d("ECHO","Itt vagyok.")
         val leagues = leagueDao.getAllLeagues()
+        Log.d("TAG",leagues.toString())
         if (leagues.isEmpty()) {
             var model = leagueService.fetchLeagueList("2021","HU","League")
             Log.d("ECHO", model.toString())
             for (response in model.responses) {
                 response.league?.let { leagueDao.insertLeague(it) }
                 Log.d("ECHO LEAGUE",response.league.toString())
+
             }
 
 
         } else {
-            //var model = leagueService.fetchLeagueList("2021","HU","League")
-            //Log.d("TAG", model.toString())
+            var model = leagueService.fetchLeagueList("2021","HU","League")
+            for (response in model.responses) {
+                var league = response.league
+                Log.d("TAG",league.toString())
+            }
             emit(leagues)
         }
-
+    Log.d("ECHO","Vegeztem.")
     }.onStart { onStart() }.onCompletion { onCompletion() }.flowOn(Dispatchers.IO)
 }
