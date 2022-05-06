@@ -7,7 +7,6 @@ import com.example.footballapp.ui.teams.TeamViewModel
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
-import com.example.footballapp.databinding.LeaguesBinding
 import com.example.footballapp.databinding.TeamsBinding
 import com.example.footballapp.model.league.League
 import com.example.footballapp.model.team.Team

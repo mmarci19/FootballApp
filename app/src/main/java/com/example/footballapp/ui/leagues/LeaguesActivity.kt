@@ -12,8 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.footballapp.databinding.LeaguesBinding
+import com.example.footballapp.databinding.LeaguesListBinding
 import com.example.footballapp.model.league.League
+import com.example.footballapp.ui.leagues.LeagueAdapter
 import com.example.footballapp.ui.leagues.LeagueViewModel
 import com.example.footballapp.ui.teams.TeamViewModel
 import com.example.footballapp.ui.teams.TeamsActivity
@@ -28,27 +29,33 @@ class LeaguesActivity : ComponentActivity() {
 
     internal val leagueViewModel: LeagueViewModel by viewModels()
     internal val teamViewModel: TeamViewModel by viewModels()
-    private lateinit var binding: LeaguesBinding
+    private lateinit var binding: LeaguesListBinding
+    private lateinit var adapter: LeagueAdapter
+    private lateinit var linearLayoutManager: LinearLayoutManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = LeaguesBinding.inflate(layoutInflater)
+
+
+        binding = LeaguesListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         val leagues = leagueViewModel.leaguesList
 
         val leaguesList: List<League>
         runBlocking(Dispatchers.IO) {
             leaguesList = leagues.first()
         }
+        Log.d("LEAGUES",leaguesList[0].name!!)
+        Log.d("LEAGUES",leaguesList[1].name!!)
 
-        binding.textView.text = leaguesList[0].name
-        binding.button.setOnClickListener {
-            val intent = Intent(this, TeamsActivity::class.java)
-            // To pass any data to next activity
-            intent.putExtra("league_id", "271")
-            Log.d("INTENT",intent.getStringExtra("league_id").toString())
-            // start your next activity
-            startActivity(intent)
-        }
+        linearLayoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = linearLayoutManager
+        adapter = LeagueAdapter(leaguesList)
+        binding.recyclerView.adapter = adapter
+        Log.d("ITEM-COUNT:" ,adapter.itemCount.toString())
+
     }
 }
