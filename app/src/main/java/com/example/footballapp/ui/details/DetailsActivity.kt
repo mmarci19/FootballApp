@@ -13,7 +13,9 @@ import com.example.footballapp.model.league.League
 import com.example.footballapp.model.team.Team
 import com.example.footballapp.ui.leagues.LeagueViewModel
 import com.google.gson.annotations.SerializedName
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.league_row.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -51,7 +53,7 @@ class DetailsActivity : ComponentActivity() {
         binding.failed.text = data.responses.failed?.streak.toString()
         binding.clean.text = data.responses.cleanSheets?.total.toString()
         binding.league.text = data.responses.league.name.toString()
-
+        Picasso.get().load(data.responses.team?.logo).into(binding.imageView)
 
     }
 }

@@ -41,7 +41,7 @@
             tools:text="Team name"
             tools:textAlignment="center" />
 
-        <Button
+        <TextView
             android:id="@+id/chooseLeague"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
@@ -51,11 +51,11 @@
 
             android:backgroundTint="#8C4444"
             android:gravity="center|right|center_horizontal|center_vertical"
-            android:text="KIVÁLASZT"
             android:textAlignment="center"
-            android:textColor="#CFD8DC"
+            android:textColor="#2E0E0E"
             android:textSize="10sp"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            tools:text="Country Code" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

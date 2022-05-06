@@ -62,6 +62,7 @@ class LeagueAdapter(private val leagues: List<League>) : RecyclerView.Adapter<Le
         fun bindLeague(league: League) {
             Log.d("HOLDER",league.name.toString())
             view.itemName.text = league?.name
+            view.chooseLeague.text = "HU"
             Picasso.get().load(league?.logo).into(view.itemImage)
             this.league = league
 
