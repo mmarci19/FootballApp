@@ -42,7 +42,7 @@
             tools:textAlignment="center" />
 
         <Button
-            android:id="@+id/chooseLeague"
+            android:id="@+id/chooseTeam"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
 
