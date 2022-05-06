@@ -2,15 +2,17 @@ package com.example.footballapp.ui.details
 
 
 import com.example.footballapp.databinding.DetailsBinding
-import com.example.footballapp.model.details.TeamDetailModel
 import com.example.footballapp.ui.teams.TeamViewModel
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import com.example.footballapp.databinding.TeamsBinding
+import com.example.footballapp.model.details.*
 import com.example.footballapp.model.league.League
 import com.example.footballapp.model.team.Team
 import com.example.footballapp.ui.leagues.LeagueViewModel
+import com.google.gson.annotations.SerializedName
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.first
@@ -27,6 +29,14 @@ class DetailsActivity : ComponentActivity() {
 
         binding = DetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val league_id = intent.getStringExtra("league_id").toString()
+        Log.d("league_id", league_id.toString())
+        detailsViewModel.setLeagueId(league_id)
+
+        val team_id = intent.getStringExtra("team_id").toString()
+        Log.d("team_id", team_id.toString())
+        detailsViewModel.setTeamId(team_id)
+
         val team = detailsViewModel.team
 
         val data: TeamDetailModel
@@ -37,6 +47,11 @@ class DetailsActivity : ComponentActivity() {
         binding.form.text = data.responses.form.toString()
         binding.league.text = data.responses.league.name.toString()
         binding.cards.text = data.responses.cards?.yellow?.firstQuarter?.percentage.toString()
+        binding.penalty.text = data.responses.penalty?.scored?.total.toString()
+        binding.failed.text = data.responses.failed?.streak.toString()
+        binding.clean.text = data.responses.cleanSheets?.total.toString()
+        binding.league.text = data.responses.league.name.toString()
+
 
     }
 }

@@ -13,15 +13,33 @@ import javax.inject.Inject
 class DetailViewModel @Inject constructor(
     private val detailRepository: DetailRepository
 ) : ViewModel() {
+    private var team_id = "0"
+    private var league_id = "0"
 
-    val team: Flow<TeamDetailModel> =
+
+
+    fun setLeagueId(id_: String){
+        Log.d("ID-SET", id_)
+        this.league_id = id_
+    }
+
+    fun setTeamId(id_: String){
+        Log.d("ID-SET", id_)
+        this.team_id = id_
+    }
+
+
+
+    lateinit var team: Flow<TeamDetailModel>
+
+    fun forceTeamLoad(){
         detailRepository.loadTeamById(
-            id = "651", //TODO League ID - Will get from the user in runtime.
-            l_id = "271", //TODO Team ID - Will get from the user in runtime.
+            id = team_id, //TODO Team ID - Will get from the user in runtime.
+            l_id = league_id, //TODO League ID - Will get from the user in runtime.
             onStart = { },
             onCompletion = { },
             onError = {  }
         )
-
+    }
 
 }

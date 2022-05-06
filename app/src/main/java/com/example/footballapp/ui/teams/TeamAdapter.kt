@@ -58,7 +58,8 @@ class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<TeamAdap
             // To pass any data to next activity
             intent.putExtra("team_id", this.team?.id.toString())
             Log.d("INTENT",intent.getStringExtra("team_id").toString())
-            // start your next activity
+            intent.putExtra("league_id", this.team?.league_id.toString())
+            Log.d("INTENT",intent.getStringExtra("league_id").toString())
             context.startActivity(intent)
         }
         fun bindTeam(team: Team) {
