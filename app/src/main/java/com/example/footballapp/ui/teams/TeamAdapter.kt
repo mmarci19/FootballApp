@@ -60,15 +60,15 @@ class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<TeamAdap
             val intent = Intent(context, DetailsActivity::class.java)
             // To pass any data to next activity
             intent.putExtra("team_id", this.team?.id.toString())
-            Log.d("INTENT",intent.getStringExtra("team_id").toString())
+            Log.d("DETAILINTENT",intent.getStringExtra("team_id").toString())
             intent.putExtra("league_id", this.team?.league_id.toString())
-            Log.d("INTENT",intent.getStringExtra("league_id").toString())
+            Log.d("DETAILINTENT",intent.getStringExtra("league_id").toString())
             context.startActivity(intent)
         }
         fun bindTeam(team: Team) {
-            Log.d("HOLDER",team.name.toString())
+            Log.d("DETAIL",team.name.toString())
             view.itemName.text = team?.name
-            view.leagueIdentifier.text = this.team?.league_id.toString()
+            //view.leagueIdentifier.text = this.team?.league_id.toString()
             Picasso.get().load(team?.logo).into(view.itemImage)
             this.team = team
 

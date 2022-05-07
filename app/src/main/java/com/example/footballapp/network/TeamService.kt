@@ -9,10 +9,10 @@ import retrofit2.http.Query
 interface TeamService {
 
 
-    @Headers("X-RapidAPI-Key: 3af0cfc0e3msh1751c32679b8f64p1f6954jsn54fb0872207f", "Accept: application/json")@GET("teams")
+    @Headers("X-RapidAPI-Key: 2d7a2452bemsh3484389efd7b45bp18adf9jsn27dfbe93b4d7", "Accept: application/json")@GET("teams")
 suspend fun fetchTeamList(@Query("season") season: String, @Query("league") league: String): TeamModel
 
-    @Headers("X-RapidAPI-Key: 3af0cfc0e3msh1751c32679b8f64p1f6954jsn54fb0872207f", "Accept: application/json")@GET("teams/statistics")
+    @Headers("X-RapidAPI-Key: 2d7a2452bemsh3484389efd7b45bp18adf9jsn27dfbe93b4d7", "Accept: application/json")@GET("teams/statistics")
 suspend fun fetchTeamStats(@Query("season") season: String, @Query("team") id_ : String, @Query("league") league: String): TeamDetailModel
 
 

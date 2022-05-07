@@ -31,28 +31,27 @@ class DetailsActivity : ComponentActivity() {
 
         binding = DetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
         val league_id = intent.getStringExtra("league_id").toString()
-        Log.d("league_id", league_id.toString())
         detailsViewModel.setLeagueId(league_id)
-
         val team_id = intent.getStringExtra("team_id").toString()
-        Log.d("team_id", team_id.toString())
         detailsViewModel.setTeamId(team_id)
-
+        detailsViewModel.forceTeamLoad()
         val team = detailsViewModel.team
-
         val data: TeamDetailModel
         runBlocking(Dispatchers.IO) {
             data = team.first()
         }
 
-        binding.form.text = data.responses.form.toString()
-        binding.league.text = data.responses.league.name.toString()
-        binding.cards.text = data.responses.cards?.yellow?.firstQuarter?.percentage.toString()
-        binding.penalty.text = data.responses.penalty?.scored?.total.toString()
-        binding.failed.text = data.responses.failed?.streak.toString()
-        binding.clean.text = data.responses.cleanSheets?.total.toString()
-        binding.league.text = data.responses.league.name.toString()
+
+        binding.textView.text = data.responses.team?.name.toString()
+        binding.league2.text = data.responses.league.name.toString()
+        binding.cards2.text = data.responses.cards?.yellow?.firstQuarter?.percentage.toString()
+        binding.penalty2.text = data.responses.penalty?.scored?.total.toString()
+        binding.failed2.text = data.responses.failed?.streak.toString()
+        binding.clean2.text = data.responses.cleanSheets?.total.toString()
+        //binding.league.text = data.responses.league.name.toString()
         Picasso.get().load(data.responses.team?.logo).into(binding.imageView)
 
     }

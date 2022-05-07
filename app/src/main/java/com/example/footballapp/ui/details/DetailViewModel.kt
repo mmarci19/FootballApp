@@ -33,7 +33,7 @@ class DetailViewModel @Inject constructor(
     lateinit var team: Flow<TeamDetailModel>
 
     fun forceTeamLoad(){
-        detailRepository.loadTeamById(
+        team = detailRepository.loadTeamById(
             id = team_id, //TODO Team ID - Will get from the user in runtime.
             l_id = league_id, //TODO League ID - Will get from the user in runtime.
             onStart = { },
