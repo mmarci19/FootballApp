@@ -45,6 +45,7 @@ override fun onCreate(savedInstanceState: Bundle?) {
     linearLayoutManager = LinearLayoutManager(this)
     binding.recyclerView.layoutManager = linearLayoutManager
     adapter = TeamAdapter(teamsList)
+    binding.leaguename.text = teamsList[0].country
     binding.recyclerView.adapter = adapter
 }
 }

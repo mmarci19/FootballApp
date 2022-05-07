@@ -7,9 +7,30 @@
     android:layout_height="match_parent"
     tools:context=".LeaguesActivity">
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:shadowColor="#120909"
+        android:text="Football Application"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#0E0A0A" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical" />
 </LinearLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal|center_vertical"
-    android:background="#FDFDFD"
+    android:background="@color/white"
     android:gravity="center_horizontal|center_vertical"
     android:orientation="vertical">
 
@@ -16,6 +16,7 @@
         android:layout_gravity="center_vertical"
         android:gravity="center_horizontal|center_vertical"
         android:text="TextView"
+        android:textColor="#000000"
         android:textSize="16sp"
         android:textStyle="bold" />
 
@@ -50,6 +51,7 @@
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Liga:"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
 
                 <TextView
@@ -58,6 +60,7 @@
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Sárga lapok:"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
 
                 <TextView
@@ -66,6 +69,7 @@
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Gól nélkül:"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
 
                 <TextView
@@ -74,6 +78,7 @@
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Rúgott gól nélkül:"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
 
                 <TextView
@@ -82,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:padding="2dp"
                     android:text="Tizenegyesek:"
+                    android:textColor="#000000"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -96,35 +102,40 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/cards2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/clean2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/failed2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="#000000" />
 
                 <TextView
                     android:id="@+id/penalty2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="#000000" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

@@ -13,9 +13,9 @@
         <entry key="app/src/main/res/layout/league_row.xml" value="0.22" />
         <entry key="app/src/main/res/layout/leagues.xml" value="0.11231884057971014" />
         <entry key="app/src/main/res/layout/leagues_layout.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/leagues_list.xml" value="0.1068840579710145" />
-        <entry key="app/src/main/res/layout/team_row.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/teams.xml" value="0.10677083333333333" />
+        <entry key="app/src/main/res/layout/leagues_list.xml" value="0.12" />
+        <entry key="app/src/main/res/layout/team_row.xml" value="0.12" />
+        <entry key="app/src/main/res/layout/teams.xml" value="0.2" />
       </map>
     </option>
   </component>

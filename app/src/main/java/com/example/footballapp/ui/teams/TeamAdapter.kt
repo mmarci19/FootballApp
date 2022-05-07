@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.league_row.view.*
 import kotlinx.android.synthetic.main.league_row.view.itemImage
 import kotlinx.android.synthetic.main.league_row.view.itemName
 import kotlinx.android.synthetic.main.team_row.view.*
+import kotlinx.android.synthetic.main.teams.view.*
 
 class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<TeamAdapter.TeamHolder>()  {
 
@@ -68,6 +69,7 @@ class TeamAdapter(private val teams: List<Team>) : RecyclerView.Adapter<TeamAdap
         fun bindTeam(team: Team) {
             Log.d("DETAIL",team.name.toString())
             view.itemName.text = team?.name
+
             //view.leagueIdentifier.text = this.team?.league_id.toString()
             Picasso.get().load(team?.logo).into(view.itemImage)
             this.team = team
