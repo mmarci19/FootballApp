@@ -11,8 +11,6 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
-//ENTITIES FROM THIS CLASS ARE NOT IN DATABASE.
-//ONLY NETWORK CALLS ARE USED.
 
 class DetailRepository @Inject constructor(
     private val teamService: TeamService
