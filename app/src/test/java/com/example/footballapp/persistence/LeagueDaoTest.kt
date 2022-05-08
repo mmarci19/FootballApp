@@ -1,4 +1,6 @@
 package com.example.footballapp.persistence
+import android.os.Build.VERSION_CODES.Q
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.footballapp.model.league.League
 import com.example.footballapp.network.LeagueService
 import com.google.gson.GsonBuilder
@@ -16,12 +18,14 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.robolectric.annotation.Config
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
-@RunWith(JUnit4::class)
+@RunWith(AndroidJUnit4::class)
+@Config(sdk = [Q])
 class LeagueDaoTest : LocalDatabase() {
 
     private lateinit var leagueDao: LeagueDao
