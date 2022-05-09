@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import com.example.footballapp.R
 import com.example.footballapp.persistence.AppDatabase
-import com.example.footballapp.persistence.AppDatabase2
 import com.example.footballapp.persistence.LeagueDao
 import com.example.footballapp.persistence.TeamDao
 import dagger.Module
@@ -19,29 +18,18 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideAppDatabase(application: Application): AppDatabase {
+    fun provideAppDatabaseTeam(application: Application): AppDatabase {
         return Room
             .databaseBuilder(
                 application,
                 AppDatabase::class.java,
-                application.getString(R.string.database)
+                "FootballDatabase.db"
             )
             .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
             .build()
     }
 
-    @Provides
-    @Singleton
-    fun provideAppDatabase2(application: Application): AppDatabase2{
-        return Room
-            .databaseBuilder(
-                application,
-                AppDatabase2::class.java,
-                application.getString(R.string.database2)
-            )
-            .fallbackToDestructiveMigration()
-            .build()
-    }
 
     @Provides
     @Singleton
@@ -51,7 +39,7 @@ object PersistenceModule {
 
     @Provides
     @Singleton
-    fun provideLeagueDao(appDatabase: AppDatabase2): LeagueDao {
+    fun provideLeagueDao(appDatabase: AppDatabase): LeagueDao {
         return appDatabase.leagueDao()
     }
 

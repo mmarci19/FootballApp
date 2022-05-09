@@ -1,23 +1,32 @@
 package com.example.footballapp.ui.leagues
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.footballapp.ui.details.DetailRepository
+import com.example.footballapp.model.league.League
+import com.example.footballapp.ui.teams.TeamsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.flow.flatMapLatest
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 
 @HiltViewModel
 class LeagueViewModel @Inject constructor(
-    //private val leagueRepository: LeaguesRepository
+    private val leagueRepository: LeaguesRepository,
 ) : ViewModel() {
+    val leaguesList: Flow<List<League>> =
+        leagueRepository.loadLeagues(
+            onStart = { Log.d("INFO","STARTED.")},
+            onCompletion = { Log.d("INFO","COMPLETED")},
+            onError = { Log.d("INFO","ERROR") }
+        )
 
-    //private val leagueIdSharedFlow: MutableSharedFlow<Long> = MutableSharedFlow(replay = 1)
+    suspend fun Function(){
+        Log.d("VIEWMODEL_TAG",leaguesList.first()[0].name!!)
+        Log.d("VIEWMODEL_TAG",leaguesList.first()[1].name!!)
+        Log.d("VIEWMODEL_TAG",leaguesList.first()[2].name!!)
+    }
 
-//    val leagueDetailsFlow = leagueIdSharedFlow.flatMapLatest {
-  //      leagueRepository.getLeagues()
-   // }
 
-    //fun loadLeagueById(id: Long) = leagueIdSharedFlow.tryEmit(id)
+
 }
